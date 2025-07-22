@@ -27,4 +27,21 @@ There are 2 main approaches to implement a disjoint set:
         In this algorithm we dont have to check all the parents.\
         Just assign parent[parent_y] = x
 
+3. Union Rank\
+    Both the above algorithm can be optimised. In the Union example if we keep selecting the wrong parent we will have a time complexity of O(n) but if we can optimise it then it would help.
+    For example if we want to merge 2 trees and if we know the height of the tree we can use that height as the parent.
+    This will eliminate the size increase when merging also will help optimizing the find.
+    Look at leetcode for the example in the graph section.
+    ```python
+    find(x) -> O(logN)
+    def find(x):
+        if x != parent[x]:
+            parent[x] = find[parent[x]]
+        return parent[x]
+    union(x,y) -> O(logN)
+    def union(x,y):
+        parent_x = find(x)
+        parent_y = find(y)
+        We keep track of a rank list which will be set to 1 at first.\
+        AS we keep merging increase the rank of the parent node by 1 only if they are equal
         

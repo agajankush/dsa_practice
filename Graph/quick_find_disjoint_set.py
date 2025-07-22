@@ -20,4 +20,4 @@ class QuickFind():
                     self.root[i] = root_x
     
     def connected(self, x, y):
-        return self.root[x] == self.root[y]
+        return self.find(x) == self.find(y)
