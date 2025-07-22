@@ -1,6 +1,6 @@
 #### Theory
 
-There are 2 main approaches to implement a disjoint set:\
+There are 2 main approaches to implement a disjoint set:
 
 1. Quick Find\
     This algorithm has very efficient find operation but a costly union operation.
@@ -18,7 +18,13 @@ There are 2 main approaches to implement a disjoint set:\
     This algorithm is effecient in a complete sense the max time complexity of this algorithm is O(n)
     ```python
     find(x) -> O(n)
-        Check if x != root[x]
-            root[x] = find(root[x]) # We recursively look for the root until we find the root
-        return root[x]
+        Check if x != parent[x]
+            parent[x] = find(parent[x]) # We recursively look for the parent until we find the parent
+        return parent[x]
+    
+    union(x,y) -> O(n)
+        Merging 2 sets\
+        In this algorithm we dont have to check all the parents.\
+        Just assign parent[parent_y] = x
+
         
