@@ -1,8 +1,8 @@
 #### Theory
 
-There are 2 main approaches to implement a disjoint set:
+There are 2 main approaches to implement a disjoint set:\
 
-1. Quick Find
+1. Quick Find\
     This algorithm has very efficient find operation but a costly union operation.
     ```python
     find(x) -> O(1) 
@@ -14,7 +14,7 @@ There are 2 main approaches to implement a disjoint set:
                 look for all the index with the root[y] and then change them to root[x]
                 this will connect them both.
     
-2. Quick Union
+2. Quick Union\
     This algorithm is effecient in a complete sense the max time complexity of this algorithm is O(n)
     ```python
     find(x) -> O(n)
