@@ -18,14 +18,14 @@ There are 2 main approaches to implement a disjoint set:
     This algorithm is effecient in a complete sense the max time complexity of this algorithm is O(n)
     ```python
     find(x) -> O(n)
-        Check if x != parent[x]
-            parent[x] = find(parent[x]) # We recursively look for the parent until we find the parent
-        return parent[x]
+        while x != parent[x]
+            x = parent[x] # We recursively look for the parent until we find the parent
+        return x
     
     union(x,y) -> O(n)
         Merging 2 sets\
         In this algorithm we dont have to check all the parents.\
-        Just assign parent[parent_y] = x
+        Just assign parent[parent_y] = parent_x
 
 3. Union Rank\
     Both the above algorithm can be optimised. In the Union example if we keep selecting the wrong parent we will have a time complexity of O(n) but if we can optimise it then it would help.
@@ -35,13 +35,31 @@ There are 2 main approaches to implement a disjoint set:
     ```python
     find(x) -> O(logN)
     def find(x):
-        if x != parent[x]:
-            parent[x] = find[parent[x]]
-        return parent[x]
+        while x != parent[x]:
+            x = parent[x]
+        return x
     union(x,y) -> O(logN)
     def union(x,y):
         parent_x = find(x)
         parent_y = find(y)
         We keep track of a rank list which will be set to 1 at first.\
         AS we keep merging increase the rank of the parent node by 1 only if they are equal
+
+4. Path Compression Optimization\
+    If we want to optimize the find function we can do that my making use of recursion.\
+    We will find the root of every node we tryign to merge and make it same.\
+    When we do the find operation we will recursively check the parent until we find an element whose parent is itself meaning its a root.\
+    We return this parent[x]
+
+    ```python
+    find(x) -> O(logN)
+        check if the parent != x
+            recursively run the find function to find the parent until its the same
+    
+    union(x,y) -> O(logN)
+        rootx
+        rooty
+        if not equal
+            parent[rooty] = rootx
+
         

@@ -6,9 +6,9 @@ class QuickFind():
     # Find the parent of the element x
     # O(n) time complexity
     def find(self, x):
-        if self.parent[x] != x:
-            self.parent[x] = self.find(self.parent[x])  # Path compression
-        return self.parent[x]
+        while self.parent[x] != x:
+            x = self.parent[x]  # Path compression
+        return x
     
     # Merging two sets containing x and y
     # O(n) time complexity
